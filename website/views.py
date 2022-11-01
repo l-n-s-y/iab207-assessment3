@@ -1,8 +1,11 @@
-from flask import Blueprint
+from flask import Blueprint,render_template
+from .models import Concert
+from . import db
 
 bp = Blueprint('main', __name__)
 
 
 @bp.route('/')
 def index():
-    return '<h1>Starter code for the assessment<h1>'
+    concerts = Concert.query.all()
+    return render_template('index.html',concerts=concerts)

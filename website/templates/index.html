@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block header %}
+	<header>
+		<title>Example Index</title>
+	</header>
+{% endblock %}
+
+{% block content %}
+	<html>
+		<h1>Concert Events Page</h1>
+		<input type="button" onclick="window.location.href='/concerts/create'" value="Create Event"></input>
+		<input type="button" onclick="window.location.href='#'" value="Book Event"></input>
+		
+	</html>
+{% endblock %}
