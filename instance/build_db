@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import sys
+
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Date
+meta = MetaData()
+engine = create_engine(f"sqlite:///concert_events.sqlite",echo=True)
+
+concerts = Table(
+	'concerts',meta,
+	Column('id',Integer,primary_key=True),
+	Column('event_name',String),
+	Column('event_description',String),
+	Column('event_date',Date),
+	Column('event_genre',String),
+	Column('event_venue',String),
+	Column('ticket_count',Integer),
+	Column('ticket_price',Integer),
+	Column('event_image',String))
+
+meta.create_all(engine)

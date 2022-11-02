@@ -37,8 +37,8 @@ def create():
 
         print("Concert created successfully.")
 
-        #return redirect(url_for('concert.create'))
-        return redirect(url_for('concert.show'))
+        return redirect(url_for('concert.create'))
+        #return redirect(url_for('concert.show'))
     return render_template('concerts/create.html',form=form)
 
 def check_upload_file(form):
@@ -47,12 +47,10 @@ def check_upload_file(form):
 
     BASE_PATH = os.path.dirname(__file__)
 
-    #upload_path = os.path.join(BASE_PATH,'static/image',secure_filename(filename))
-    upload_path = os.path.join(BASE_PATH,'static/image')
+    upload_path = os.path.join(BASE_PATH,'static/image',secure_filename(filename))
 
-    db_upload_path = '/static/image/' + secure_filename(filename)
+    db_upload_path = '/static/image/'+secure_filename(filename)
 
     fp.save(upload_path)
-
     return db_upload_path
-                
+

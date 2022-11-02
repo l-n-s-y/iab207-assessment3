@@ -1,4 +1,4 @@
-# iab-207-assessment3
+# IAB207 Assessment Task 3 - Web Application Solution
 
 ## Team Members
 Hai Son Cao - n10824111  

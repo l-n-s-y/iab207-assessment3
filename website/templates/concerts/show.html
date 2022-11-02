@@ -7,20 +7,51 @@
 <div class="container">  
     <div class="row mt-5 mb-3">  
       <div class="col-md-12">  
+        <div class="float-left">
+          <h1 class="mb-0">Concert Name</h1>  
+          <p>{{concert.event_name}}</p>
+        </div>
+
         <div class="float-left">  
-          <h1 class="mb-0">{{concert.event_name}}</h1>  
-          <p>Popular Destination</p>  
+          <h1 class="mb-0">Event Description:</h1>  
+          <p>{{concert.event_description}}</p>
+        </div>
+
+        <div class="float-left">  
+          <h1 class="mb-0">Event Date:</h1>  
+          <p>{{concert.event_date}}</p>
+        </div>
+
+        <div class="float-left">  
+          <h1 class="mb-0">Genre:</h1>  
+          <p>{{concert.event_genre}}</p>
         </div>  
  
-        <div class="float-right text-right">  
-          <p class="mb-0">1 AUD equals</p>  
-          <h2 id="exchange-rate">0.62 EUR</h1>  
-        </div>  
-      </div>  
+        <div class="float-left">  
+          <h1 class="mb-0">Venue:</h1>  
+          <p>{{concert.event_venue}}</p>
+        </div>
+
+        <div class="float-left">  
+          <h1 class="mb-0">Ticket Count:</h1>
+          <p>{{concert.ticket_count}}</p>
+        </div>
+
+        <div class="float-left">  
+          <h1 class="mb-0">Ticket Price:</h1>  
+          <p>{{concert.ticket_price}}</p>
+        </div>
+
+        <div class="float-left">  
+          <!-- <h1 class="mb-0">{{concert.event_image}}</h1>   -->
+          <img src="{{concert.event_image}}">
+        </div>
+        
+      </div> 
     </div>  
  
     <!-- Destination --> 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-12">  
         <div class="card my-3">  
           <div class="card-body">  
@@ -37,7 +68,7 @@
           </div>  
         </div>  
       </div>  
-    </div>     
+    </div>  -->    
  
    
  
