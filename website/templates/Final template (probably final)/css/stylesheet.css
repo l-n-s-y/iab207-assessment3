@@ -1,0 +1,196 @@
+img.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    margin-top: 5px;
+
+
+}
+
+/* Nav bar */
+.ticketmarket-navbar .navbar-outline {
+	border: 2px solid lightgrey;
+}
+
+
+.navbar-brand {
+    margin-left: 15px;
+}
+
+.user-login {
+    margin-right: 15px;
+}
+
+#searchbar {
+    width: 35rem;
+    margin-left: 20rem;
+}
+
+.user-login {
+	border-radius: 5px;
+	padding: var(--navbar-user-login-padding-y) var(--navbar-user-login-padding-x);
+	background-color: none;
+	transition: background-color 0.075s linear;
+}
+
+.user-login:hover {
+	background-color: lightgrey;
+}
+
+body { padding-bottom: 20px; }
+
+/* End nav bar */
+
+.col-2.d-none.d-lg-block {
+    height: 250px;
+    width: 400px;
+}
+
+#hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/img/harrystyles.jpeg');
+
+  }
+
+img #hero {
+    object-fit: cover;
+}
+  
+  #hero .container {
+    padding-top: 72px;
+  }
+  
+  #hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #fff;
+  }
+  
+  #hero h2 {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 50px;
+    font-size: 24px;
+  }
+  
+  
+  
+  #hero .btn-event-details {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    margin: 10px 0 0 25px;
+    color: #fff;
+    line-height: 1;
+  }
+  
+
+.image{
+    height:17rem;
+    width:26rem;
+    object-fit:cover;
+}
+
+.row.mb-2 {
+    margin-top: 30px;
+}
+
+
+#filter-dropdown {
+    margin-top: 10px;
+    margin-bottom: -15px;
+    margin-left: 10px;
+}
+ 
+#ticket-button {
+    margin-top: 10px;
+}
+
+
+
+/* Comments section (Event Details page) */
+
+.card {
+    
+    border: none;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    border-radius: 4px;
+}
+
+
+.badge{
+
+        padding: 7px;
+        padding-right: 9px;
+    padding-left: 16px;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.user-img{
+
+    margin-top: 4px;
+}
+
+.check-icon{
+
+    font-size: 17px;
+    color: #c3bfbf;
+    top: 1px;
+    position: relative;
+    margin-left: 3px;
+}
+
+.form-check-input{
+    margin-top: 6px;
+    margin-left: -24px !important;
+    cursor: pointer;
+}
+
+
+.form-check-input:focus{
+    box-shadow: none;
+}
+
+
+.icons i{
+
+    margin-left: 8px;
+}
+.reply{
+
+    margin-left: 12px;
+}
+
+.reply small{
+
+    color: #b7b4b4;
+
+}
+
+.reply small:hover{
+
+    color: green;
+    cursor: pointer;
+
+}
+
+#username {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#my-comment {
+    margin-bottom: 15px;
+}
+
+#enter-comment {
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    border-radius: 4px;
+}
+
+/* End comment section */
