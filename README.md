@@ -4,6 +4,7 @@
 Hai Son Cao - n10824111  
     - User Registration  
     - User Sign In  
+    - Beautiful front-end design
 
 Joachim Lovenskjold Persson - n11392134  
     - Intuitive Search  
