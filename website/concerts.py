@@ -37,9 +37,11 @@ def create():
 
         print("Concert created successfully.")
 
-        return redirect(url_for('concert.create'))
-        #return redirect(url_for('concert.show'))
-    return render_template('concerts/create.html',form=form)
+        #return redirect(url_for('concert.create'))
+        #return render_template('concerts/show.html')
+    print("Error on creating concert.")
+    #return render_template('concerts/create.html',form=form)
+    return render_template('concerts/event-creation.html',form=form)
 
 def check_upload_file(form):
     fp = form.event_image.data

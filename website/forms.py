@@ -1,6 +1,6 @@
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, DateField, IntegerField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, DateField, IntegerField, SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -21,24 +21,28 @@ class RegisterForm(FlaskForm):
 
 ALLOWED_EXTENSIONS = ['png','jpg']
 
+GENRES = [
+        (1,'Alternative'),
+        (2,'Pop'),
+        (3,'Indie'),
+        (4,'Rock'),
+        (5,'Soul')
+        ]
 # Create new Concert Events
 class ConcertForm(FlaskForm):
     event_name = StringField("Concert Name",validators=[InputRequired()])
-
     event_description = TextAreaField("Event Description",validators=[InputRequired()])
-
     event_date = DateField("Event Date",validators=[InputRequired()])
 
-    genre = StringField("Genre",validators=[InputRequired()])
+    #genre = StringField("Genre",validators=[InputRequired()])
+    genre = SelectField("Genre",validators=[InputRequired()],choices=[(genre[0],genre[1]) for genre in GENRES])
+    #genre.choices = [for genre in GENRES]
 
     venue = StringField("Venue Location",validators=[InputRequired()])
-
     ticket_count = IntegerField("Ticket Count",validators=[InputRequired()])
-
     ticket_price = StringField("Ticket Price",validators=[InputRequired()])
-
     event_image = FileField("Event Image",validators=[
         FileRequired(message="Image is required"),
         FileAllowed(ALLOWED_EXTENSIONS,message="Image must be png or jpg")])
 
-    submit = SubmitField("Create Event")
+    submit = SubmitField("Submit")

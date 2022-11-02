@@ -43,10 +43,6 @@ body { padding-bottom: 20px; }
 
 /* End nav bar */
 
-#search-button {
-    margin-left: 10px;
-}
-
 .col-2.d-none.d-lg-block {
     height: 250px;
     width: 400px;
@@ -93,7 +89,6 @@ img #hero {
     line-height: 1;
   }
   
-  
 
 .image{
     height:17rem;
@@ -103,10 +98,6 @@ img #hero {
 
 .row.mb-2 {
     margin-top: 30px;
-}
-
-.pt-4.my-md-5.pt-md-5.border-top {
-    margin-left: 50px;
 }
 
 
@@ -120,9 +111,6 @@ img #hero {
     margin-top: 10px;
 }
 
-#seeMoreEvents{
-    margin-top: 20px;
-}
 
 
 /* Comments section (Event Details page) */
@@ -204,3 +192,5 @@ img #hero {
     box-shadow: 5px 6px 6px 2px #e9ecef;
     border-radius: 4px;
 }
+
+/* End comment section */
