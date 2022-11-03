@@ -8,4 +8,4 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 def index():
     concerts = Concert.query.all()
-    return render_template('index.html',concerts=concerts)
+    return render_template('Final template (probably final)/landing.html',concerts=concerts)
