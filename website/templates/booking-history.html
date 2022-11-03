@@ -1,0 +1,80 @@
+{%extends "base.html"%}
+
+{% block title %}Sessions{% endblock %}
+
+{% block content %}
+
+<body>
+
+  <div class="py-5 text-center">
+    <h2>Purchase History</h2>
+    <p class="lead">Here are the bookings you've made with us</p>
+  </div>
+
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-md-8">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Pop</strong>
+            <h3 class="mb-0">Harry Styles</h3>
+            <p>October 12th, 2022</p>
+            <div class="see-more w-50">
+
+              <a class="w-70 btn btn-success" href="ticket-view.html" id="ticket-button">View ticket</a>
+              <button class="w-70 btn btn-outline-primary" type="button" id="ticket-button">Book more
+                tickets..</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-8">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-warning">Alternative</strong>
+            <h3 class="mb-0">Mitski</h3>
+            <p>November 15, 2022</p>
+            <div class="see-more w-50">
+              <a class="w-70 btn btn-success" href="ticket-view.html" id="ticket-button">View ticket</a>
+              <button class="w-70 btn btn-outline-primary" type="button" id="ticket-button">Book more
+                tickets..</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+
+    <div class="col-12 col-md">
+      <img class="mb-2" src="assets/logo1.png" alt="" width="24" height="24">
+    </div>
+    <p class="mb-1">&copy; IAB207 Assignment 3 - 2022</p>
+
+  </footer>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+</body>
+{% endblock %}
+
+</html>
