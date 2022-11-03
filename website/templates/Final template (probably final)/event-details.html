@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title -->
+    <title>Sessions</title>
+
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<header>
+
+    
+    <!-- NavBar -->
+    <div id="navbar" class="navbar-outline">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sessions-navbar">
+          <!-- Logo -->
+          <a class="navbar-brand" href="landing.html"><b>Sessions</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                <!-- Home, Concerts, Artists, Venues, Deals -->
+                <li class="nav-item active">
+                  <a class="nav-link" href="landing.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="landing.html#events-view">Browse Events</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="event-creation.html">Create an Event</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking-history.html">Purchase History</a>
+                  </li>
+              </ul>
+      
+              
+              <div class="input-group sb-1" id="searchbar">
+                <input type="text" class="form-control" placeholder="Search Artists, Genres, Venues" aria-label="search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+              </div>
+             </div>
+      
+             <div class="user-icons">
+              <div class="user-login">
+                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                  <a class="btn" href="login.html" role="button">Sign in / Register</a>
+                
+              </div>
+            </div>
+      
+             </div>
+      
+  
+<body>
+
+
+    <div class="container">
+        <div class="row mb-2 d-flex justify-content-center">
+        
+
+            <div class="col-md-6 ">
+                <img class="img-fluid" src="assets/img/harrystyles.jpeg" alt="">
+
+                <div class="col-md-12">
+                    <div class="position-sticky" style="top: 2rem;">
+                        <div class="p-4 mb-3 bg-light rounded">
+                            <h5>
+                                <span><img class="mb-2" src="assets/icon/date.png" alt="" width="20" height="20"></span>
+                                Date and time
+                            </h5>
+                            <p>October 12th, 2022, 7:00pm</p>
+
+                            <h5>
+                                <span><img class="mb-2" src="assets/icon/location.png" alt="" width="20"
+                                        height="20"></span>
+                                Location
+                            </h5>
+                            <p>Fortitude Valley Music Hall, 312-318 Brunswick St, Fortitude Valley QLD 4006</p>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">Pop</strong>
+                        <h3 class="mb-0">Harry Styles</h3>
+                        <p class="card-text mt-2 mb-1">You already have a ticket booked for this event!
+                        </p>
+                        <div class="see-more w-50">
+                            <a class="w-70 btn btn-success" href="ticket-view.html" id="ticket-button">View ticket</a>
+
+                        </div>
+
+                    </div>
+                </div>
+                <article class="blog-post">
+                    <h2 class="blog-post-title mb-1">About this event</h2>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus placerat augue, at gravida
+                        elit
+                        volutpat ac. Vestibulum sit amet quam ac felis porta viverra sit amet quis neque. Donec magna
+                        nulla,
+                        pulvinar quis odio id, luctus faucibus arcu. Nam nec sapien a quam iaculis aliquet quis at
+                        tellus.
+                    </p>
+                    <blockquote>
+                        <p>Nulla venenatis gravida neque, vitae elementum felis accumsan in. Maecenas ipsum dolor,
+                            bibendum non
+                            mi ut, fringilla molestie nisi. Praesent id tincidunt nisi, quis porta nisi. Vestibulum
+                            aliquam
+                            tempus tortor et gravida. Vestibulum sit amet eros at lectus gravida tempor non sed velit.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie viverra nulla sit amet
+                            interdum. Sed id lorem interdum, auctor dui quis, tincidunt sem. Aliquam commodo, felis
+                            lacinia
+                            vestibulum ornare, tortor erat commodo massa, at feugiat quam odio porta sapien. Nullam
+                            lobortis id
+                            urna ut tempus. Etiam eget felis viverra, fermentum diam vitae, posuere nunc. Praesent
+                            bibendum
+                            porttitor urna, vel ullamcorper turpis pulvinar sit amet. Maecenas egestas ante nec varius
+                            tincidunt.
+                        </p>
+                    </blockquote>
+                    <p>Nulla viverra vestibulum elementum. Duis hendrerit tortor tortor, non accumsan sem eleifend quis.
+                        Mauris
+                        vehicula purus sed tortor finibus scelerisque. Quisque a facilisis mauris.</p>
+                </article>
+
+            </div>
+
+
+            <div class="container mt-5" id="comments">
+
+                <div class="row  d-flex justify-content-left">
+
+                    <div class="col-md-12">
+
+                        <div class="headings d-flex justify-content-between align-items-center mb-3">
+                            <h5>Comments</h5>
+
+                        </div>
+
+                        <div class="card p-3">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div class="user d-flex flex-row align-items-center">
+
+                                    <img src="https://i.imgur.com/hczKIze.jpg" width="30"
+                                        class="user-img rounded-circle mr-2">
+                                    <small class="font-weight-bold text-primary" id="username">james_howard</small>
+                                    <small class="font-weight-bold">This event looks cool, I'm going!</small>
+
+                                </div>
+
+
+                                <small>2 days ago</small>
+
+                            </div>
+
+
+                            <div class="action d-flex justify-content-between mt-2 align-items-center">
+                                <div class="reply px-4">
+                                    <small>Reply</small>
+                                </div>
+
+
+                                <div class="icons align-items-center">
+
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-check-circle-o check-icon"></i>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="card p-3 mt-2">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div class="user d-flex flex-row align-items-center">
+
+                                    <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30"
+                                        class="user-img rounded-circle mr-2">
+                                    <span><small class="font-weight-bold text-primary"
+                                            id="username">andrea_carter</small> <small
+                                            class="font-weight-bold text-primary">@harryforever123</small> <small
+                                            class="font-weight-bold">you crazy</small></span>
+
+                                </div>
+
+
+                                <small>3 days ago</small>
+
+                            </div>
+
+
+                            <div class="action d-flex justify-content-between mt-2 align-items-center">
+
+                                <div class="reply px-4">
+                                    <small>Reply</small>
+                                </div>
+
+
+                                <div class="icons align-items-center">
+
+                                    <i class="fa fa-check-circle-o check-icon text-primary"></i>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <div class="card p-3 mt-2">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div class="user d-flex flex-row align-items-center">
+
+                                    <img src="https://i.imgur.com/C4egmYM.jpg" width="30"
+                                        class="user-img rounded-circle mr-2">
+                                    <span><small class="font-weight-bold text-primary" id="username">crispy_oreo</small>
+                                        <small class="font-weight-bold">Harry Styles is so hot bro </small></span>
+
+                                </div>
+
+
+                                <small>3 days ago</small>
+
+                            </div>
+
+
+                            <div class="action d-flex justify-content-between mt-2 align-items-center">
+
+                                <div class="reply px-4">
+                                    <small>Reply</small>
+                                </div>
+
+
+                                <div class="icons align-items-center">
+                                    <i class="fa fa-check-circle-o check-icon text-primary"></i>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="card p-3 mt-2">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div class="user d-flex flex-row align-items-center">
+
+                                    <img src="https://i.imgur.com/0LKZQYM.jpg" width="30"
+                                        class="user-img rounded-circle mr-2">
+                                    <span><small class="font-weight-bold text-primary"
+                                            id="username">harryforever123</small> <small class="font-weight-bold">I love
+                                            harry I have a shrine with his pictures on it at home</small></span>
+
+                                </div>
+
+
+                                <small>3 days ago</small>
+
+                            </div>
+
+
+                            <div class="action d-flex justify-content-between mt-2 align-items-center">
+
+                                <div class="reply px-4">
+                                    <small>Reply</small>
+                                </div>
+
+
+                                <div class="icons align-items-center">
+                                    <i class="fa fa-user-plus text-muted"></i>
+                                    <i class="fa fa-star-o text-muted"></i>
+                                    <i class="fa fa-check-circle-o check-icon text-primary"></i>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-12 ">
+            <form>
+                <div class="form-group" id="my-comment">
+                    <h5>Add your own comment!</h5>
+
+                    <input  class="form-control form-control-lg" id="enter-comment" placeholder="...">
+
+                
+
+                    <div class="col-sm-6 mt-2">
+                        <button type="submit" class="btn btn-primary mb-z">Submit</button>
+
+                    </div>                            
+                    
+                  </div>
+
+            </form>
+
+        </div>
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+
+</body>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+
+    <div class="col-12 col-md">
+      <img class="mb-2" src="assets/logo1.png" alt="" width="24" height="24">
+    </div>
+    <p class="mb-1">&copy; IAB207 Assignment 3 - 2022</p>
+  
+  </footer>
+
+</html>
