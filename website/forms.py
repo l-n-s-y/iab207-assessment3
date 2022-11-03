@@ -46,3 +46,8 @@ class ConcertForm(FlaskForm):
         FileAllowed(ALLOWED_EXTENSIONS,message="Image must be png or jpg")])
 
     submit = SubmitField("Submit")
+
+class TicketPurchaseForm(FlaskForm):
+    ticket_quantity = IntegerField("Ticket Quantity",validators=[InputRequired()])
+
+    submit = SubmitField("Submit")

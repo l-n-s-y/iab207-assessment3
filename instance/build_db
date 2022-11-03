@@ -18,4 +18,12 @@ concerts = Table(
 	Column('ticket_price',Integer),
 	Column('event_image',String))
 
+tickets = Table(
+    'tickets',meta,
+    Column('id',Integer,primary_key=True),
+    Column('event_id',Integer),
+    Column('ticket_owner',String),
+    Column('ticket_quantity',Integer))
+    
+
 meta.create_all(engine)

@@ -27,3 +27,11 @@ class Concert(db.Model):
 
     def __repr__(self):
         return "<Name: {}>".format(self.name)
+
+
+class Ticket(db.Model):
+    __tablename__ = "tickets"
+    id = db.Column(db.Integer,primary_key=True)
+    event_id = db.Column(db.Integer) # Foreign key
+    ticket_owner = db.Column(db.String(100))
+    ticket_quantity = db.Column(db.Integer)
