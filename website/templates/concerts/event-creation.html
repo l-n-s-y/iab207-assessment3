@@ -1,143 +1,132 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
 
+{% extends 'base.html' %}
+{% block content %}    
 
-  {% extends 'base.html' %}
-  {% block content %}
-    
-
-    <div class="container">
-        <main>
-          <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="{{ url_for('static',filename='assets/icon/waveform.png') }}" alt="" width="72" height="57">
-            <h2>Create your very own Session</h2>
-            <p class="lead">Fill out the form below and click submit</p>
-          </div>
-
-          <div class="row">
-            <div class="col-md-8">
-                <h4 class="mb-3">Session Details</h4>
-                <form class="needs-validation" novalidate>
-                  <div class="row g-3">
-                    <div class="col-sm-12">
-                      <label for="title" class="form-label">Title</label>
-                      {# <input type="text" class="form-control" id="title" placeholder="Name of our event" value="" required> #}
-                      {{ form.event_name(class_="form-control",id="title",placeholder="Name of our event") }}
-                      <div class="invalid-feedback">
-                        Session Title can't be empty
-                      </div>
-                    </div>
-
-                
-        
-                    {# <small class="form-text text-muted">For event updates and/or management</small> #}
-  
-                    
-  
-                    <div class="col-sm-6">
-                      <label for="genre" class="form-label">Genre</label>
-                      {{ form.genre(class_="form-select",id="genre",required=True) }}
-                      <div class="invalid-feedback">
-                        Please select a valid genre.
-                      </div>
-                    </div>
-                    
-  
-                    <div class="col-sm-6">
-                      <label for="date" class="form-label">Date</label>
-                      {# <input type="text" class="form-control" id="date" placeholder="DD/MM/YYYY" required> #}
-                      {{ form.event_date(class_="form-control",id="date",placeholder="DD/MM/YYYY") }}
-                      <div class="invalid-feedback">
-                        Valid first name is required.
-                      </div>
-                    </div>
-          
-                    <div class="col-12">
-                      <label for="description" class="form-label">Description</label>
-                      {# <textarea class="form-control text-muted"   id="description" rows="3" placeholder="Enter descriptions here.."></textarea> 
-                      #}
-                      {{ form.event_description(class_="form-control text-muted",id="description",rows="3",placeholder="Enter descriptions here...") }}
-                      {# <small class="form-text text-muted">Give us all the details, don't be a lazy slag</small> #}
-  
-                    </div>
-
-                    <div class="col-sm-4">
-                      <label for="ticketquantity" class="form-label">Ticket quantity</label>
-                      {# <input type="text" class="form-control" id="ticketquantity" placeholder="However many you want bae x" required> #}
-                      {{ form.ticket_count(class_="form-control",id="ticketquantity",placeholder="Ticket Quantity",required=True) }}
-                      <div class="invalid-feedback">
-                        Please enter ticket quantity
-                      </div>
-                    </div>
-      
-
-                    <div class="col-sm-4">
-                      <label for="priceField" class="form-label">Ticket price</label>
-                      {# <input type="text" class="form-control" id="priceField" placeholder="$d.cc" required> #}
-                      {{ form.ticket_price(class_="form-control",id="priceField",placeholder="$d.cc",required=True) }}
-                      <div class="invalid-feedback">
-                        Please enter a ticket price this isn't a charity! 
-                      </div>
-                    </div>
-                  
-        
-                    <div class="col-sm-8">
-                      <label for="venue" class="form-label">Venue Location</label>
-                      {# <input type="text" class="form-control" id="venue" placeholder="1234 Main St" required> #}
-                      {{ form.venue(class_="form-control",id="venue",placeholder="1234 Main St",required=True) }}
-                      <div class="invalid-feedback">
-                        Please enter the venue location
-                      </div>
-                    </div>
-
-                    
-                  </div>
-      
-    
-              
-        
-            
-                </form>
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="{{ url_for('static',filename='assets/icon/waveform.png') }}" alt="" width="72" height="57">
+      <h2>Create your very own Session</h2>
+      <p class="lead">Fill out the form below and click submit</p>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+          <h4 class="mb-3">Session Details</h4>
+          <form action="/concerts/create" method="POST" enctype="multipart/form-data">
+            <!-- <form> -->
+            <div class="row g-3">
+              <div class="col-sm-12">
+                <label for="title" class="form-label">Title</label>
+                {{ form.event_name(class_="form-control",id="title",placeholder="Name of event",required=True) }}
+                <div class="invalid-feedback">
+                  Session Title can't be empty
+                </div>
               </div>
 
-              <div class="col-md-4">
-                <h4 class="mb-3">Upload images</h4>
-                <input class="form-control form-control-lg" id="formFileLg" type="file" />
-            </div>
-            
-            
-        </div>
-
-        
-        <div class="col text-center">
-            <button class="mt-5 w-25 btn btn-primary btn-lg" type="submit">Submit</button>
-        </div>
-        
-            </div>
-            
-            
           
+  
+              <!-- <small class="form-text text-muted">For event updates and/or management</small> -->
+
+              
+
+              <div class="col-sm-6">
+                <label for="genre" class="form-label">Genre</label>
+                {{ form.genre(class_="form-select",id="genre",required=True) }}
+                <div class="invalid-feedback">
+                  Please select a valid genre.
+                </div>
+              </div>
+              
+
+              <div class="col-sm-6">
+                <label for="date" class="form-label">Date</label>
+                {{ form.event_date(class_="form-control",id="date",placeholder="DD/MM/YYYY",required=True) }}
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+    
+              <div class="col-12">
+                <label for="description" class="form-label">Description</label>
+                {{ form.event_description(class_="form-control text-muted",id="description",rows=3,placeholder="Enter description...",required=True) }}
+
+              </div>
+
+              <div class="col-sm-4">
+                <label for="ticketquantity" class="form-label">Ticket quantity</label>
+                {{ form.ticket_count(class_="form-control",id="ticketquantity",placeholder="Ticket quantity",required=True) }}
+                <div class="invalid-feedback">
+                  Please enter ticket quantity
+                </div>
+              </div>
+
+
+              <div class="col-sm-4">
+                <label for="priceField" class="form-label">Ticket price</label>
+                {{ form.ticket_price(class_="form-control",id="priceField",placeholder="$d.cc",required=True) }}
+                <div class="invalid-feedback">
+                  Please enter a ticket price this isn't a charity! 
+                </div>
+              </div>
             
+  
+              <div class="col-sm-8">
+                <label for="venue" class="form-label">Venue Location</label>
+                {{ form.venue(class_="form-control",id="venue",placeholder="1234 Main St",required=True) }}
+                <div class="invalid-feedback">
+                  Please enter the venue location
+                </div>
+              </div>
 
-          </main>
+              
+            </div>
+
+
         
-
+  
         </div>
-        <footer class="my-5 pt-5 text-muted text-center text-small">
 
-          <div class="col-12 col-md">
-            <img class="mb-2" src="{{ url_for('static',filename='assets/logo1.png') }}" alt="" width="24" height="24">
-          </div>
-          <p class="mb-1">&copy; IAB207 Assignment 3 - 2022</p>
-        
-        </footer>
+        <div class="col-md-4">
+          <h4 class="mb-3">Upload images</h4>
+          <!-- <input class="form-control form-control-lg" id="formFileLg" type="file" /> -->
+          {{ form.event_image(class_="form-control form-control-lg",id="formFileLg",required=True) }}
       </div>
       
+      
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
+  
+  <div class="col text-center">
+      {{ form.submit(class_="mt-5 w-25 btn btn-primary btn-lg") }}
+  </div>
+      </div>
+    </form>
+      
+    
+      
 
-    {% endblock %}
+    </main>
+  
+
+  </div>
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+
+    <div class="col-12 col-md">
+      <img class="mb-2" src="{{ url_for('static',filename='assets/logo1.png') }}" alt="" width="24" height="24">
+    </div>
+    <p class="mb-1">&copy; IAB207 Assignment 3 - 2022</p>
+  
+  </footer>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+crossorigin="anonymous"></script>
+
+{% endblock %}
+
 
 </html>

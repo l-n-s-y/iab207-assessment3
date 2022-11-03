@@ -14,14 +14,15 @@ def show(id):
 
     #cform = CommentForm()
     
-    return render_template("concerts/show.html",concert=concert)#,form=cform)
+    return render_template("concerts/event-details.html",concert=concert)#,form=cform)
 
 @bp.route("/create",methods = ["GET","POST"])
 #@login_required
 def create():
     print(f"Event creation method type: {request.method}")
     form = ConcertForm()
-    if form.validate_on_submit():
+    #if form.validate_on_submit():
+    if request.method == "POST":
         db_file_path=check_upload_file(form)
         concert = Concert(
                 event_name=form.event_name.data,
@@ -35,12 +36,19 @@ def create():
         db.session.add(concert)
         db.session.commit()
 
+        # Get newly created concert ID
+        event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{form.event_name.data}'").first()[0]
+        print(f"Event id: {event_id}")
+
         print("Concert created successfully.")
+
+        #@return redirect(url_for(f'concert.{event_id}'))
+        return redirect(url_for('concert.show',id=event_id))
 
         #return redirect(url_for('concert.create'))
         #return render_template('concerts/show.html')
-    print("Error on creating concert.")
     #return render_template('concerts/create.html',form=form)
+    print("Loaded form")
     return render_template('concerts/event-creation.html',form=form)
 
 def check_upload_file(form):

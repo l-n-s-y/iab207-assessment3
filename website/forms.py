@@ -22,11 +22,11 @@ class RegisterForm(FlaskForm):
 ALLOWED_EXTENSIONS = ['png','jpg']
 
 GENRES = [
-        (1,'Alternative'),
-        (2,'Pop'),
-        (3,'Indie'),
-        (4,'Rock'),
-        (5,'Soul')
+        ('Alternative','Alternative'),
+        ('Pop','Pop'),
+        ('Indie','Indie'),
+        ('Rock','Rock'),
+        ('Soul','Soul')
         ]
 # Create new Concert Events
 class ConcertForm(FlaskForm):
