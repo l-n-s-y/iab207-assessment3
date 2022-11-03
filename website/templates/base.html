@@ -7,6 +7,7 @@
 
     <!-- Title -->
     <title>Sessions</title>
+    <link rel="icon" href="static/assets/logo1.png">
 
     <link rel="stylesheet" href="{{ url_for('static',filename='css/stylesheet.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -30,16 +31,16 @@
               <ul class="navbar-nav">
               <!-- Home, Concerts, Artists, Venues, Deals -->
               <li class="nav-item active">
-                <a class="nav-link" href="landing.html">Home</a>
+                <a class="nav-link" href="{{url_for('main.index')}}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="landing.html#events-view">Browse Events</a>
+                <a class="nav-link" href="{{url_for('main.redirectToEvents')}}">Browse Events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="event-creation.html">Create an Event</a>
+                <a class="nav-link active" href="{{url_for('concert.create')}}">Create an Event</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="booking-history.html">Purchase History</a>
+                <a class="nav-link" href="{{url_for('main.history')}}">Purchase History</a>
               </li>
             </ul>
     
@@ -71,5 +72,5 @@
     {% block content %}
     {% endblock %}
 </body>
-    }
+    
 </html>
