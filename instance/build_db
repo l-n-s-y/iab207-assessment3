@@ -6,6 +6,13 @@ from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, 
 meta = MetaData()
 engine = create_engine(f"sqlite:///concert_events.sqlite",echo=True)
 
+users = Table(
+    'users',meta,
+    Column('id',Integer,primary_key=True),
+    Column('username',String),
+    Column('email',String),
+    Column('password_hash',String))
+
 concerts = Table(
 	'concerts',meta,
 	Column('id',Integer,primary_key=True),
