@@ -16,6 +16,7 @@ def show(id):
     
     return render_template("concerts/event-details.html",concert=concert)#,form=cform)
 
+event_id = None
 @bp.route("/create",methods = ["GET","POST"])
 #@login_required
 def create():
@@ -38,9 +39,6 @@ def create():
 
         # Get newly created concert ID
         event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{form.event_name.data}'").first()[0]
-        print(f"Event id: {event_id}")
-
-        print("Concert created successfully.")
 
         #@return redirect(url_for(f'concert.{event_id}'))
         return redirect(url_for('concert.show',id=event_id))
@@ -48,18 +46,18 @@ def create():
         #return redirect(url_for('concert.create'))
         #return render_template('concerts/show.html')
     #return render_template('concerts/create.html',form=form)
-    print("Loaded form")
     return render_template('concerts/event-creation.html',form=form)
 
 def check_upload_file(form):
     fp = form.event_image.data
-    filename = fp.filename
+    # filename = fp.filename
+    filename = "event_image_"+str(event_id)+"."+(fp.filename.split(".")[-1])
 
     BASE_PATH = os.path.dirname(__file__)
 
-    upload_path = os.path.join(BASE_PATH,'static/image',secure_filename(filename))
+    upload_path = os.path.join(BASE_PATH,'static/assets/img/event_images',secure_filename(filename))
 
-    db_upload_path = '/static/image/'+secure_filename(filename)
+    db_upload_path = '/static/assets/img/event_images/'+secure_filename(filename)
 
     fp.save(upload_path)
     return db_upload_path
