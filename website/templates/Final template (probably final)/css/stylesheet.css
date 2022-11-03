@@ -19,16 +19,14 @@ img.logo {
     margin-left: 15px;
 }
 
-.user-login {
-    margin-right: 15px;
-}
 
 #searchbar {
     width: 35rem;
-    margin-left: 20rem;
+    margin-left: 10rem;
 }
 
 .user-login {
+    margin-right: 10px;
 	border-radius: 5px;
 	padding: var(--navbar-user-login-padding-y) var(--navbar-user-login-padding-x);
 	background-color: none;
@@ -37,6 +35,12 @@ img.logo {
 
 .user-login:hover {
 	background-color: lightgrey;
+}
+
+#currentUser {
+    margin-top: 1px;
+  margin-right: 10px;
+  font-size: 16.5px;
 }
 
 body { padding-bottom: 20px; }
@@ -94,10 +98,6 @@ img #hero {
     height:17rem;
     width:26rem;
     object-fit:cover;
-}
-
-.row.mb-2 {
-    margin-top: 30px;
 }
 
 
@@ -194,3 +194,4 @@ img #hero {
 }
 
 /* End comment section */
+
