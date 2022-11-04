@@ -42,7 +42,6 @@ def show(id):
     
     return render_template("concerts/event-details.html",concert=concert,ticket_form=ticket_form,sold_out=sold_out,comment_form=comment_form)
 
-event_id = None
 @bp.route("/create",methods = ["GET","POST"])
 @login_required
 def create():
@@ -51,7 +50,7 @@ def create():
     if form.validate_on_submit():
         #if request.method == "POST":
         event_name = form.event_name.data
-        db_file_path=check_upload_file(form)
+        db_file_path=get_upload_file_path(form)
         concert = Concert(
                 event_creator=current_user.username,
                 event_name=event_name,
@@ -71,9 +70,9 @@ def create():
         return redirect(url_for('concert.show',id=event_id))
     return render_template('concerts/event-creation.html',form=form)
 
-def check_upload_file(form):
+def get_upload_file_path(form):
     fp = form.event_image.data
-    filename = "event_image_"+str(event_id)+"."+(fp.filename.split(".")[-1])
+    filename = "event_image_"+str(event_name)+"."+(fp.filename.split(".")[-1])
 
     BASE_PATH = os.path.dirname(__file__)
 
@@ -81,6 +80,7 @@ def check_upload_file(form):
 
     db_upload_path = '/static/assets/img/event_images/'+secure_filename(filename)
 
+    
     fp.save(upload_path)
     return db_upload_path
 

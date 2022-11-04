@@ -53,7 +53,7 @@ body { padding-bottom: 20px; }
     height: 100vh;
     background-image: url('../assets/img/harrystyles.jpeg');
 
-  }
+}
 
 img #hero {
     object-fit: cover;

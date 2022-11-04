@@ -13,8 +13,12 @@ bp = Blueprint('auth', __name__)
 
 
 # this is the hint for a login function
+next_page = ""
 @bp.route('/login', methods=['GET', 'POST'])
 def login(): #view function
+    global next_page
+    if request.method == "GET":
+        next_page = request.args.get("next")
     print('In Login View function')
     login_form = LoginForm()
     error=None
@@ -26,14 +30,14 @@ def login(): #view function
             error='Invalid Username/Password'
         if not error:
             login_user(stored_user)
-            nextp = request.args.get('next') #this gives the url from where the login page was accessed
-            print(nextp)
-            if not nextp:
-                nextp = "/"
+            # next_page = request.args.get('next') #this gives the url from where the login page was accessed
+            # print(next_page)
+            if not next_page or next_page == "/login":
+                next_page = "/"
             # print(f"Username: {current_user.username} logged in")
-            if nextp is None or not nextp.startswith('/'):
+            if not next_page or not next_page.startswith('/'):
                 return redirect(url_for('main.index'))
-            return redirect(nextp)
+            return redirect(next_page)
         else:
             flash(error)
     # return render_template('user.html', form=login_form, heading='Login')
