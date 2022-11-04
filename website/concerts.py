@@ -1,3 +1,4 @@
+import datetime
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Concert, Ticket, Comment
 from .forms import ConcertForm, TicketPurchaseForm, CommentForm
@@ -93,7 +94,15 @@ def ticketview(id):
 def comment(id):
   #here the form is created  form = CommentForm()
   form = CommentForm()
+  concert_obj = Concert.query.filter_by(id=id).first()
   if form.validate_on_submit():	#this is true only in case of POST method
+    comment = Comment(
+        concert_id=id,
+        text=form.comment.data,
+        user_id="CURRENT USER" # REPLACE
+        )
+    db.session.add(comment)
+    db.session.commit()
     print("The following comment has been posted:", form.text.data)
   # notice the signature of url_for
   return redirect(url_for('concerts.event-details',id=id))
