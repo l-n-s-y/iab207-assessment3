@@ -1,0 +1,75 @@
+{%extends "base.html"%}
+
+{% block title %}Sessions{% endblock %}
+
+{% block content %}
+<body>
+
+    <div class="py-5 text-center">
+        <h2>Here's your ticket</h2>
+        <p class="lead mt-3">Enjoy the show! Leave us a review when you get back</p>
+        <p class="lead">Thank you for supporting Sessions</p>
+      </div>
+
+    <div class="row d-flex justify-content-center">
+        
+
+        <div class="col-md-6 ">
+
+            <div class="col-md-12">
+                <div class="position-sticky" style="top: 2rem;">
+                    <img class="img-fluid" src="{{ concert.event_image }}" alt="">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <h5>
+                            <span><img class="mb-2" src="{{ url_for('static',filename='assets/icon/show.png') }}" alt="" width="20" height="20"></span>
+                            Session Name
+                        </h5>
+                        <!-- <p>Harry Styles</p> -->
+                        <p>{{ concert.event_name }}</p>
+
+                        <h5>
+                            <span><img class="mb-2" src="{{ url_for('static',filename='assets/icon/date.png') }}" alt="" width="20" height="20"></span>
+                            Date and Time
+                        </h5>
+                        <!-- <p>October 12th, 2022, 7:00pm</p> -->
+                        <p>{{ concert.event_date }}</p>
+
+                        <h5>
+                            <span><img class="mb-2" src="{{ url_for('static',filename='assets/icon/location.png') }}" alt="" width="20"
+                                    height="20"></span>
+                            Location
+                        </h5>
+                        <!-- <p>Fortitude Valley Music Hall, 312-318 Brunswick St, Fortitude Valley QLD 4006</p> -->
+                        <p>{{ concert.event_venue }}</p>
+
+                        <!-- <h5>
+                            <span><img class="mb-2" src="{{ url_for('static',filename='assets/icon/id.png') }}" alt="" width="20"
+                                    height="20"></span>
+                            Booking Order ID
+                        </h5>
+                        <p>LKASJD8723</p> -->
+
+                        <!-- <h5>
+                            <span><img class="mb-2" src="{{ url_for('static',filename='assets/icon/date.png') }}" alt="" width="20"
+                                    height="20"></span>
+                            Booking Date
+                        </h5>
+                        <p>20 September, 2022</p> -->
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"></script>
+  
+  </body>
+  {% endblock %}
+  </html>
+    
