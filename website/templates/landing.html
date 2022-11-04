@@ -108,23 +108,6 @@
     </div>
 {% endfor %}
          
-    {% for concert in concerts %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{concert.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{concert.name}}</h5>
-            <p class="card-text">{{concert.description}}</p>
-            {% if concert.status == 'Upcoming' %}
-                <button type="button" class="btn btn-success">Upcoming</button>
-            {% elif concert.status == 'Booked' %}
-                <button type="button" class="btn btn-warning">Booked</button>
-            {% elif concert.status == 'Cancelled' %}
-                <button type="button" class="btn btn-danger">Cancelled</button>
-            {% endif %}
-            <a href="event-details.html" class="btn btn-primary">See details</a>
-        </div>
-    </div>
-{% endfor %}
 
 <div class="see-more w-50 m-auto mt-5">
   <button class="w-100 btn btn-outline-primary" type="button" id="seeMoreEvents">See more events..</button>
