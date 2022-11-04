@@ -34,9 +34,7 @@ class ConcertForm(FlaskForm):
     event_description = TextAreaField("Event Description",validators=[InputRequired()])
     event_date = DateField("Event Date",validators=[InputRequired()])
 
-    #genre = StringField("Genre",validators=[InputRequired()])
     genre = SelectField("Genre",validators=[InputRequired()],choices=[(genre[0],genre[1]) for genre in GENRES])
-    #genre.choices = [for genre in GENRES]
 
     venue = StringField("Venue Location",validators=[InputRequired()])
     ticket_count = IntegerField("Ticket Count",validators=[InputRequired()])
@@ -50,4 +48,9 @@ class ConcertForm(FlaskForm):
 class TicketPurchaseForm(FlaskForm):
     ticket_quantity = IntegerField("Ticket Quantity",validators=[InputRequired()])
 
+    submit = SubmitField("Submit")
+
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField("Comment",validators=[InputRequired()])
     submit = SubmitField("Submit")

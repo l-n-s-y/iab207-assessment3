@@ -15,6 +15,7 @@
       <div class="col-md-8">
           <h4 class="mb-3">Session Details</h4>
           <form action="/concerts/create" method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
             <!-- <form> -->
             <div class="row g-3">
               <div class="col-sm-12">

@@ -6,6 +6,13 @@ from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, 
 meta = MetaData()
 engine = create_engine(f"sqlite:///concert_events.sqlite",echo=True)
 
+comments = Table(
+    'comments',meta,
+    Column('id',Integer,primary_key=True),
+    Column('username',String),
+    Column('comment',String),
+    Column('created',Date))
+
 users = Table(
     'users',meta,
     Column('id',Integer,primary_key=True),

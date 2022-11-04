@@ -48,21 +48,24 @@
                         <strong class="d-inline-block mb-2 text-primary">{{ concert.event_genre }}</strong>
                         <!-- <h3 class="mb-0">Harry Styles</h3> -->
                         <h3 class="mb-0">{{ concert.event_name }}</h3>
-                        {% if False %} {# Replace with ticket_purchased logic #}
-                        <p class="card-text mb-auto">You already have a ticket booked for this event!</p>
+                        {% if sold_out %}
+                            <p class="card-text mb-auto">This event is sold out.</p>
+                        <!-- <div class="col-sm-3 mt-2">
+                        {{ ticket_form.submit(class_="w-70 btn btn-success",id="ticket-button",value="Sold out")}}
+                        </div> -->
+                        {% else %}
+                            <form method="POST">
+                            {{ ticket_form.csrf_token }}
+                            <div class="col-sm-3 mt-2">
+                                <!-- <input type="number" class="form-control" id="quantityField" placeholder="Enter quantity" min=1 required> -->
+                                {{ ticket_form.ticket_quantity(class_="form-control",id="quantityField",placeholder="# Tickets",min=1,required=True) }}
+                            </div>
+                            <div class="see-more w-50">
+                                <!-- <a class="w-70 btn btn-success" href="ticket-view.html" id="ticket-button">Purchase ticket</a> -->
+                                {{ ticket_form.submit(class_="w-70 btn btn-success",id="ticket-button",value="Purchase ticket")}}
+                            </div>
+                            </form>
                         {% endif %}
-
-
-                        <form method="POST">
-                        <div class="col-sm-3 mt-2">
-                            <!-- <input type="number" class="form-control" id="quantityField" placeholder="Enter quantity" min=1 required> -->
-                            {{ ticket_form.ticket_quantity(class_="form-control",id="quantityField",placeholder="# Tickets",min=1,required=True) }}
-                        </div>
-                        <div class="see-more w-50">
-                            <!-- <a class="w-70 btn btn-success" href="ticket-view.html" id="ticket-button">Purchase ticket</a> -->
-                            {{ ticket_form.submit(class_="w-70 btn btn-success",id="ticket-button",value="Purchase ticket")}}
-                        </div>
-                        </form>
 
                     </div>
                 </div>
@@ -287,7 +290,7 @@
 
         <div class="col-12 col-md">
             <img class="mb-2" src="{{ url_for('static',filename='assets/logo1.png') }}" alt="" width="24" height="24">
-            <small class="d-block mb-3 text-muted">&copy; Hai Son Cao - 2022</small>
+            <small class="d-block mb-3 text-muted">&copy; IAB207 Assessment 3 - 2022</small>
         </div>
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Concert, Ticket
-from .forms import ConcertForm, TicketPurchaseForm
+from .forms import ConcertForm, TicketPurchaseForm, CommentForm
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -13,26 +13,32 @@ def show(id):
     concert = Concert.query.filter_by(id=id).first()
 
     ticket_form = TicketPurchaseForm()
-    if request.method == "POST":
+    comment_form = CommentForm()
+    if ticket_form.validate_on_submit():
+        print("VALIDATED")
         current_user = "CURRENT USER"
-        ticket = Ticket(
-            event_id=id,
-            ticket_owner=current_user, # REPLACE
-            ticket_quantity=ticket_form.ticket_quantity.data
-            )
-        db.session.add(ticket)
-        db.session.commit()
+        for i in range(int(ticket_form.ticket_quantity.data)):
+            ticket = Ticket(
+                event_id=id,
+                ticket_owner=current_user, # REPLACE
+                )
+            db.session.add(ticket)
+            db.session.commit()
 
-        print(f"ID: {id}")
-        print(f"Current User: {current_user}")
-        ticket_id = db.session.execute(f"SELECT * FROM tickets WHERE event_id='{id}' AND ticket_owner='{current_user}'").all()[-1][0]
-        print(f"Ticket ID: {ticket_id}")
+        ticket_id = db.session.execute(f"SELECT id FROM tickets WHERE event_id='{id}' AND ticket_owner='{current_user}'").all()[-1][0]
 
         return redirect(url_for('concert.ticketview',id=ticket_id))
 
-    #cform = CommentForm()
+    sold_out = False
+    sold_tickets = len(db.session.execute(f"SELECT * FROM tickets WHERE event_id='{id}'").all())
+    available_tickets = db.session.execute(f"SELECT ticket_count FROM concerts WHERE id='{id}'").first()[0]
+    print(f"Sold: {sold_tickets}")
+    print(f"Available: {available_tickets}")
+    if (sold_tickets >= available_tickets):
+        sold_out = True
+        print("Sold out")
     
-    return render_template("concerts/event-details.html",concert=concert,ticket_form=ticket_form)#,form=cform)
+    return render_template("concerts/event-details.html",concert=concert,ticket_form=ticket_form,sold_out=sold_out,comment_form=comment_form)
 
 event_id = None
 @bp.route("/create",methods = ["GET","POST"])
@@ -40,8 +46,8 @@ event_id = None
 def create():
     print(f"Event creation method type: {request.method}")
     form = ConcertForm()
-    #if form.validate_on_submit():
-    if request.method == "POST":
+    if form.validate_on_submit():
+        #if request.method == "POST":
         event_name = form.event_name.data
         db_file_path=check_upload_file(form)
         concert = Concert(
@@ -59,17 +65,11 @@ def create():
         # Get newly created concert ID
         event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{event_name}'").first()[0]
 
-        #@return redirect(url_for(f'concert.{event_id}'))
         return redirect(url_for('concert.show',id=event_id))
-
-        #return redirect(url_for('concert.create'))
-        #return render_template('concerts/show.html')
-    #return render_template('concerts/create.html',form=form)
     return render_template('concerts/event-creation.html',form=form)
 
 def check_upload_file(form):
     fp = form.event_image.data
-    # filename = fp.filename
     filename = "event_image_"+str(event_id)+"."+(fp.filename.split(".")[-1])
 
     BASE_PATH = os.path.dirname(__file__)
