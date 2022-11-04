@@ -1,6 +1,6 @@
 #import flask - from the package import class
 from flask import Flask 
-from flask_bootstrap import Bootstrap5
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -19,7 +19,7 @@ def create_app():
     #initialize db with flask app
     db.init_app(app)
 
-    bootstrap = Bootstrap5(app)
+    bootstrap = Bootstrap(app)
     
     #initialize the login manager
     login_manager = LoginManager()
