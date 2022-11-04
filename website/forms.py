@@ -13,14 +13,17 @@ class LoginForm(FlaskForm):
  # this is the registration form
 class RegisterForm(FlaskForm):
     user_name=StringField("User Name", validators=[InputRequired()])
-    email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
-    #linking two fields - password should be equal to data entered in confirm
-    password=PasswordField("Password", validators=[InputRequired(),
-                  EqualTo('confirm', message="Passwords should match")])
-    confirm = PasswordField("Confirm Password")
+    email_id = StringField("Email Address", validators=[Email("Please enter a valid email"),
+        EqualTo('email_confirmation',message="Emails should match")])
+    email_confirmation = StringField("Confirm Email",validators=[InputRequired()])
+    # password=PasswordField("Password", validators=[InputRequired(),
+    #               EqualTo('confirm', message="Passwords should match")])
+    password=PasswordField("Password",validators=[InputRequired()])
+    # confirm = PasswordField("Confirm Password")
+
+    submit = SubmitField("Register")
 
 ALLOWED_EXTENSIONS = ['png','jpg']
-
 GENRES = [
         ('Alternative','Alternative'),
         ('Pop','Pop'),

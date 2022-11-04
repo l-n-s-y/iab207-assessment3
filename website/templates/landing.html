@@ -41,77 +41,42 @@
 
     <br>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/shoestrings.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">The Shoestrings</h5>
-                    <p class="card-text">This Irish indie band plays some of the most banging tunes</p>
-                    <button type="button" class="btn btn-success">Upcoming</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/catmoms.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">The CatMoms</h5>
-                    <p class="card-text">Enjoy the beats from the American band known for their lyrics</p>
-                    <button type="button" class="btn btn-success">Upcoming</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/magicans.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Magicans</h5>
-                    <p class="card-text">Come and watch the promo show for their first album</p>
-                    <button type="button" class="btn btn-warning">Booked</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/sunriseboys.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">SunriseBoys</h5>
-                    <p class="card-text">SunriseBoys returns once again to please our ears</p>
-                    <button type="button" class="btn btn-danger">Cancelled</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% if events_present %}
+        {% for i in range(row_count) %}
+            <div class="row">
+                {% for concert in concerts[i] %}
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ concert.event_image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ concert.event_name }}</h5>
+                            <p class="card-text">{{ concert.event_description }}</p>
+                            {% if concert.event_status == 'Upcoming' %}
+                                <button type="button" class="btn btn-success">Upcoming</button>
 
-{% for concert in concerts %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{concert.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{concert.name}}</h5>
-            <p class="card-text">{{concert.description}}</p>
-            {% if concert.status == 'Upcoming' %}
-                <button type="button" class="btn btn-success">Upcoming</button>
-            {% elif concert.status == 'Booked' %}
-                <button type="button" class="btn btn-warning">Booked</button>
-            {% elif concert.status == 'Cancelled' %}
-                <button type="button" class="btn btn-danger">Cancelled</button>
-            {% endif %}
-            <a href="event-details.html" class="btn btn-primary">See details</a>
-        </div>
-    </div>
-{% endfor %}
+                            {% elif concert.event_status == 'Booked' %}
+                                <button type="button" class="btn btn-warning">Booked</button>
+
+                            {% elif concert.event_status == 'Cancelled' %}
+                                <button type="button" class="btn btn-danger">Cancelled</button>
+
+                            {% endif %}
+
+                            <a href="event-details.html" class="btn btn-primary">See details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
          
 
-<div class="see-more w-50 m-auto mt-5">
+<!-- <div class="see-more w-50 m-auto mt-5">
   <button class="w-100 btn btn-outline-primary" type="button" id="seeMoreEvents">See more events..</button>
 
-</div>
+</div> -->
 
 
 

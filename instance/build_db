@@ -30,6 +30,7 @@ concerts = Table(
 	Column('event_venue',String),
 	Column('ticket_count',Integer),
 	Column('ticket_price',Integer),
+    Column('event_status',String),
 	Column('event_image',String))
 
 tickets = Table(
