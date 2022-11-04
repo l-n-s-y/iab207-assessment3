@@ -13,5 +13,5 @@ Lindsay Fry - n11051736
     - Event Creation/Updating  
     - Event Booking  
 
-Thomas Storen - n11079169  
+Thomas (Tom) Storen - n11079169  
     - Landing Page  
