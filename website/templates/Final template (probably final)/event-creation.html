@@ -86,6 +86,20 @@
                 <h4 class="mb-3">Session Details</h4>
                 <form class="needs-validation" novalidate>
                   <div class="row g-3">
+                    <div class="col-sm-3 mt-2" id="event-status">
+
+                      <select class="form-select btn btn-outline-primary dropdown-toggle" name="genreFilter" id="event-status">
+                        <option value="">Event Status</option>
+                        <option value="Open">Open</option>
+                        <option value="Unpublished">Unpublished</option>
+                        <option value="Sold Out">Sold Out</option>
+                        <option value="Cancelled">Cancelled</option>
+
+                     </select>
+                    </div>
+                    
+
+
                     <div class="col-sm-12">
                       <label for="title" class="form-label">Title</label>
                       <input type="text" class="form-control" id="title" placeholder="Name of our event" value="" required>
@@ -97,7 +111,7 @@
                 
         
                     <!-- <small class="form-text text-muted">For event updates and/or management</small> -->
-  
+                    
                     
   
                     <div class="col-sm-6">
@@ -179,12 +193,13 @@
         <div class="col text-center">
             <button class="mt-5 w-25 btn btn-primary btn-lg" type="submit">Submit</button>
         </div>
+
+        <div class="col text-center mt-2">
+          <button type="button" class="btn btn-outline-secondary">Delete event</button>
+        </div>
         
-            </div>
-            
-            
-          
-            
+        
+            </div>      
 
           </main>
         
