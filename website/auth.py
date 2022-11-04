@@ -36,3 +36,17 @@ bp = Blueprint('auth', __name__)
 #         else:
 #             flash(error)
 #     return render_template('user.html', form=login_form, heading='Login')
+
+#auth = Blueprint('auth', __name__)
+
+#@auth.route('/login')
+#def login():
+#   return 'Login'
+
+#@auth.route('/signup')
+#def signup():
+#    return 'Signup'
+
+#@auth.route('/logout')
+#def logout():
+#    return 'Logout'
