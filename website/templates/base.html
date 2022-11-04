@@ -45,12 +45,12 @@
             </ul>
     
             
-            <div class="input-group sb-1" id="searchbar">
-              <input type="text" class="form-control" placeholder="Search Artists, Genres, Venues" aria-label="search" aria-describedby="basic-addon2">
+            <form class="input-group sb-1" id="searchbar" action="{{url_for('main.search')}}">
+              <input id="SearchForm" type="text" class="form-control" placeholder="Search Artists, Genres, Venues" aria-label="search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Search</button>
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
               </div>
-            </div>
+            </form>
            </div>
     
            <div class="user-icons">
