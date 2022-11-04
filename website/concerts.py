@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Concert, Ticket
+from .models import Concert, Ticket, Comment
 from .forms import ConcertForm, TicketPurchaseForm, CommentForm
 from . import db, app
 import os
@@ -88,3 +88,12 @@ def ticketview(id):
     concert = Concert.query.filter_by(id=ticket.event_id).first()
 
     return render_template('concerts/ticket-view.html',ticket=ticket,concert=concert)
+
+@bp.route('/<id>/comment', methods = ['GET', 'POST'])
+def comment(id):
+  #here the form is created  form = CommentForm()
+  form = CommentForm()
+  if form.validate_on_submit():	#this is true only in case of POST method
+    print("The following comment has been posted:", form.text.data)
+  # notice the signature of url_for
+  return redirect(url_for('concerts.event-details',id=id))

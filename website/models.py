@@ -35,3 +35,15 @@ class Ticket(db.Model):
     event_id = db.Column(db.Integer) # Foreign key
     ticket_owner = db.Column(db.String(100))
     ticket_quantity = db.Column(db.Integer)
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(400))
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    #add the foreign keys
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    concert_id = db.Column(db.Integer, db.ForeignKey('concerts.id'))
+
+    def __repr__(self):
+        return "<Comment: {}>".format(self.text)
