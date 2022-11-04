@@ -23,6 +23,7 @@ users = Table(
 concerts = Table(
 	'concerts',meta,
 	Column('id',Integer,primary_key=True),
+    Column('event_creator',String),
 	Column('event_name',String),
 	Column('event_description',String),
 	Column('event_date',Date),

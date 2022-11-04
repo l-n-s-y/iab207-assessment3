@@ -9,10 +9,13 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 def index():
     concerts = Concert.query.all()
-    row_count = len(concerts)//4
-    if (row_count == 0): row_count = 1
-    print(f"Row count: {row_count}")
-    return render_template('/landing.html',row_count=row_count,concerts=concerts)
+    # row_count = (len(concerts)//4) + 1
+    concert_count = len(concerts)
+
+    # break_out = False
+    events_present = len(concerts) > 0
+    print(f"Drawing {len(concerts)} concerts")
+    return render_template('/landing.html',events_present=events_present,concert_count=concert_count,concerts=concerts)
 
 @bp.route('/history')
 @login_required
@@ -22,14 +25,6 @@ def history():
 @bp.route('/redirectToEvents')
 def redirectToEvents():
     return redirect(url_for('main.index') + '#events-view')
-
-# @bp.route('/login')
-# def login():
-#     return render_template('/login.html')
-
-# @bp.route('/register')
-# def register():
-#     return render_template('/signup.html')
 
 @bp.route('/search')
 def search():

@@ -2,6 +2,7 @@ import datetime
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Concert, Ticket, Comment
 from .forms import ConcertForm, TicketPurchaseForm, CommentForm
+from flask_login import login_required
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -43,7 +44,7 @@ def show(id):
 
 event_id = None
 @bp.route("/create",methods = ["GET","POST"])
-#@login_required
+@login_required
 def create():
     print(f"Event creation method type: {request.method}")
     form = ConcertForm()
@@ -52,6 +53,7 @@ def create():
         event_name = form.event_name.data
         db_file_path=check_upload_file(form)
         concert = Concert(
+                event_creator=current_user.username,
                 event_name=event_name,
                 event_description=form.event_description.data,
                 event_date=form.event_date.data,
@@ -91,6 +93,7 @@ def ticketview(id):
     return render_template('concerts/ticket-view.html',ticket=ticket,concert=concert)
 
 @bp.route('/<id>/comment', methods = ['GET', 'POST'])
+@login_required
 def comment(id):
   #here the form is created  form = CommentForm()
   form = CommentForm()

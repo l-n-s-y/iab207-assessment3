@@ -65,7 +65,16 @@ def register():
 
         print(f"User {user_name} created sucessfully.")
 
+        login_user(new_user)
+
         return redirect(url_for('main.index'))
 
     # return render_template('user.html',form=register_form,heading='Register')
     return render_template('signup.html',form=register_form,heading='Register')
+
+@bp.route('/logout',methods=['GET'])
+# @login_required
+def logout():
+    logout_user()
+
+    return redirect(url_for('main.index'))

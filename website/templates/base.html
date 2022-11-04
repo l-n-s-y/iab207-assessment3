@@ -7,7 +7,7 @@
 
     <!-- Title -->
     <title>Sessions</title>
-    <link rel="icon" href="static/assets/logo1.png">
+    <link rel="icon" href="{{ url_for('static',filename='assets/logo1.png') }}">
 
     <link rel="stylesheet" href="{{ url_for('static',filename='css/stylesheet.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -18,54 +18,101 @@
 
 <header>
 
-    <!-- NavBar -->
-    <div id="navbar" class="navbar-outline">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sessions-navbar">
-        <!-- Logo -->
-        <a class="navbar-brand" href="{{url_for('main.index')}}"><b>Sessions</b></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-    
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-              <!-- Home, Concerts, Artists, Venues, Deals -->
-              <li class="nav-item active">
-                <a class="nav-link" href="{{url_for('main.index')}}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for('main.redirectToEvents')}}">Browse Events</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="{{url_for('concert.create')}}">Create an Event</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for('main.history')}}">Purchase History</a>
-              </li>
-            </ul>
-    
-            
-            {#<form class="input-group sb-1" id="searchbar" action="{{url_for('main.search')}}">
-              <input id="SearchForm" type="text" class="form-control" placeholder="Search Artists, Genres, Venues" aria-label="search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+    {% if current_user.username %}
+        <!-- NavBar -->
+        <div id="navbar" class="navbar-outline">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sessions-navbar">
+            <!-- Logo -->
+            <a class="navbar-brand" href="landing.html"><b>Sessions</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                    <!-- Home, Concerts, Artists, Venues, Deals -->
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="landing.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="landing.html#events-view">Browse Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="event-creation.html">Create an Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking-history.html">Purchase History</a>
+                        </li>
+                    </ul>
+
+                    
+                    <div class="input-group sb-1" id="searchbar">
+                            <input type="text" class="form-control" placeholder="Search Artists, Genres, Venues" aria-label="search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navbar-nav">
+                    <p class="navbar-nav" id="currentUser">Hi, {{ current_user.username }}</p>
+                    &nbsp
+                    &nbsp
+                    <div class="user-login" >
+                        <a href="{{ url_for('auth.logout') }}"><img class="mr-2" src="{{ url_for('static',filename='assets/icon/signout.png') }}" alt="" width="25" height="25"></a>
+                    </div>
+                </div>
+        </div>
+    {% else %}
+        <!-- NavBar -->
+        <div id="navbar" class="navbar-outline">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light sessions-navbar">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{{url_for('main.index')}}"><b>Sessions</b></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+        
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                  <!-- Home, Concerts, Artists, Venues, Deals -->
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('main.index')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('main.redirectToEvents')}}">Browse Events</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{{url_for('concert.create')}}">Create an Event</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('main.history')}}">Purchase History</a>
+                  </li>
+                </ul>
+        
+                
+                <div class="input-group sb-1" id="searchbar">
+                  <input type="text" class="form-control" placeholder="Search Artists, Genres, Venues" aria-label="search" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                  </div>
+                </div>
+               </div>
+        
+               <div class="user-icons">
+                <div class="user-login">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    <a class="btn" href="{{url_for('auth.login')}}" role="button">Sign in / Register</a>
+                  
+                </div>
               </div>
-            </form>#}
-           </div>
-    
-           <div class="user-icons">
-            <div class="user-login">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                <a class="btn" href="{{url_for('auth.login')}}" role="button">Sign in / Register</a>
-              
-            </div>
-          </div>
-    
-           </div>
-    
-       
-        </nav>
-    </div>
+        
+               </div>
+        
+           
+            </nav>
+        </div>
+    {% endif %}
 </header>
 
 <body>
