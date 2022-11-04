@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "dwa",
+            "database": "${workspaceFolder:iab207-assessment3}/instance/concert_events.sqlite"
+        }
+    ]
+}
