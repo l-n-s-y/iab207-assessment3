@@ -19,3 +19,11 @@ def history():
 @bp.route('/redirectToEvents')
 def redirectToEvents():
     return redirect(url_for('main.index') + '#events-view')
+
+@bp.route('/login')
+def login():
+    return render_template('/login.html')
+
+@bp.route('/register')
+def register():
+    return render_template('/signup.html')

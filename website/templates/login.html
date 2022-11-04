@@ -9,7 +9,7 @@
     <div class="container">
         <main>
           <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="assets/icon/waveform.png" alt="" width="72" height="57">
+            <img class="d-block mx-auto mb-4" src="static/assets/icon/waveform.png" alt="" width="72" height="57">
             <h2>Sign in</h2>
           </div>
 
@@ -29,7 +29,7 @@
           <div class="row justify-content-center">
             <div class="col-sm-4">
                 <label for="password" class="form-label">Password</label>
-                <input type="text" class="form-control" id="password" placeholder="lolz.." required>
+                <input type="text" class="form-control" id="password" placeholder="Password" required>
                 <div class="invalid-feedback">
                   Password can't be empty
                 </div>
@@ -42,7 +42,7 @@
         
         <div class="col text-center mt-2">
             <small class="form-text text-muted">Don't have an account?</small>
-            <a href="signup.html" class="link-primary">Sign up here</a>
+            <a href="{{url_for('main.register')}}" class="link-primary">Sign up here</a>
 
         
         </div>
@@ -61,7 +61,7 @@
             <footer class="my-5 pt-5 text-muted text-center text-small">
 
                 <div class="col-12 col-md">
-                  <img class="mb-2" src="assets/logo1.png" alt="" width="24" height="24">
+                  <img class="mb-2" src="static/assets/logo1.png" alt="" width="24" height="24">
                 </div>
                 <p class="mb-1">&copy; IAB207 Assignment 3 - 2022</p>
               
