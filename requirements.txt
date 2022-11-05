@@ -1,3 +1,13 @@
+boto3
+botocore
+certifi
+chardet
+Click
+dominate
+psycopg2-binary
+idna
+itsdangerous
+
 Flask
 Flask-Bootstrap
 Flask-Login
