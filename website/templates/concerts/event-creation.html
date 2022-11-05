@@ -18,23 +18,36 @@
             {{ form.csrf_token }}
             <!-- <form> -->
             <div class="row g-3">
+              <div class="col-sm-3 mt-2" id="event-status">
+
+                <label for="eventStatus" class="form-label">Event Status</label>
+
+                  {% if update %}
+                    {{ form.status(class_="form-select",id="status",required=True,value=concert.event_status) }}
+                  {% else %}
+                    {{ form.status(class_="form-select dropdown-toggle",id="status",required=True) }}
+                  {% endif %}
+              </div>
+
               <div class="col-sm-12">
                 <label for="title" class="form-label">Title</label>
-                {{ form.event_name(class_="form-control",id="title",placeholder="Name of event",required=True) }}
+                {% if update %}
+                  {{ form.event_name(class_="form-control",id="title",placeholder="Name of event",required=True,value=concert.event_name) }}
+                {% else %}
+                  {{ form.event_name(class_="form-control",id="title",placeholder="Name of event",required=True) }}
+                {% endif %}
                 <div class="invalid-feedback">
                   Session Title can't be empty
                 </div>
-              </div>
-
-          
-  
-              <!-- <small class="form-text text-muted">For event updates and/or management</small> -->
-
-              
+              </div>              
 
               <div class="col-sm-6">
                 <label for="genre" class="form-label">Genre</label>
-                {{ form.genre(class_="form-select",id="genre",required=True) }}
+                {% if update %}
+                  {{ form.genre(class_="form-select",id="genre",required=True,value=concert.event_date) }}
+                {% else %}
+                  {{ form.genre(class_="form-select",id="genre",required=True) }}
+                {% endif %}
                 <div class="invalid-feedback">
                   Please select a valid genre.
                 </div>
@@ -43,7 +56,11 @@
 
               <div class="col-sm-6">
                 <label for="date" class="form-label">Date</label>
-                {{ form.event_date(class_="form-control",id="date",placeholder="DD/MM/YYYY",required=True) }}
+                {% if update %}
+                  {{ form.event_date(class_="form-control",id="date",placeholder="DD/MM/YYYY",required=True, value=concert.event_date) }}
+                {% else %}
+                  {{ form.event_date(class_="form-control",id="date",placeholder="DD/MM/YYYY",required=True) }}
+                {% endif %}
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -51,13 +68,21 @@
     
               <div class="col-12">
                 <label for="description" class="form-label">Description</label>
+                {% if update %}
+                {{ form.event_description(class_="form-control text-muted",id="description",rows=3,placeholder="Enter description...",required=True,value=concert.event_description) }}
+                {% else %}
                 {{ form.event_description(class_="form-control text-muted",id="description",rows=3,placeholder="Enter description...",required=True) }}
+                {% endif %}
 
               </div>
 
               <div class="col-sm-4">
                 <label for="ticketquantity" class="form-label">Ticket quantity</label>
+                {% if update %}
+                {{ form.ticket_count(class_="form-control",id="ticketquantity",placeholder="Ticket quantity",required=True, value=concert.ticket_count) }}
+                {% else %}
                 {{ form.ticket_count(class_="form-control",id="ticketquantity",placeholder="Ticket quantity",required=True) }}
+                {% endif %}
                 <div class="invalid-feedback">
                   Please enter ticket quantity
                 </div>
@@ -66,7 +91,11 @@
 
               <div class="col-sm-4">
                 <label for="priceField" class="form-label">Ticket price</label>
+                {% if update %}
+                {{ form.ticket_price(class_="form-control",id="priceField",placeholder="$d.cc",required=True,value=concert.ticket_price) }}
+                {% else %}
                 {{ form.ticket_price(class_="form-control",id="priceField",placeholder="$d.cc",required=True) }}
+                {% endif %}
                 <div class="invalid-feedback">
                   Please enter a ticket price this isn't a charity! 
                 </div>
@@ -75,7 +104,11 @@
   
               <div class="col-sm-8">
                 <label for="venue" class="form-label">Venue Location</label>
+                {% if update %}
+                {{ form.venue(class_="form-control",id="venue",placeholder="1234 Main St",required=True,value=concert.event_venue) }}
+                {% else %}
                 {{ form.venue(class_="form-control",id="venue",placeholder="1234 Main St",required=True) }}
+                {% endif %}
                 <div class="invalid-feedback">
                   Please enter the venue location
                 </div>
@@ -92,7 +125,11 @@
         <div class="col-md-4">
           <h4 class="mb-3">Upload images</h4>
           <!-- <input class="form-control form-control-lg" id="formFileLg" type="file" /> -->
+          {% if update %}
           {{ form.event_image(class_="form-control form-control-lg",id="formFileLg",required=True) }}
+          {% else %}
+          {{ form.event_image(class_="form-control form-control-lg",id="formFileLg",required=True) }}
+          {% endif %}
       </div>
       
       
@@ -100,8 +137,13 @@
 
   
   <div class="col text-center">
-      <button type="button" class="mt-5 btn btn-lg btn-outline-danger">Delete event</button>
-      {{ form.submit(class_="mt-5 w-25 btn btn-primary btn-lg") }}
+      {% if update %}
+      <!-- <button type="button" class="mt-5 btn btn-lg btn-outline-danger">Delete event</button> -->
+      {{ form.delete(class_="mt-5 btn btn-lg btn-outline-danger",value='Delete') }}
+      {{ form.update(class_="mt-5 w-25 btn btn-primary btn-lg",value='Update Event') }}
+      {% else %}
+      {{ form.submit(class_="mt-5 w-25 btn btn-primary btn-lg",value='Create Event') }}
+      {% endif %}
   </div>
   <div class="col text-center mt-2">
         </div>

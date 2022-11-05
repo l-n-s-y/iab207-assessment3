@@ -26,7 +26,7 @@ def history():
 def redirectToEvents():
     return redirect(url_for('main.index') + '#events-view')
 
-@bp.route('/search')
+@bp.route('/search', methods=["POST"])
 def search():
     if request.args['search']:
         print(request.args['search'])

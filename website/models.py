@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
 class Concert(db.Model):
     __tablename__ = "concerts"
     id = db.Column(db.Integer, primary_key=True)
+    event_creator = db.Column(db.String(100))
     event_name = db.Column(db.String(80))
     event_description = db.Column(db.String(200))
     event_date= db.Column(db.Date)
@@ -21,6 +22,7 @@ class Concert(db.Model):
     event_venue = db.Column(db.String(100))
     ticket_count = db.Column(db.Integer)
     ticket_price = db.Column(db.Integer)
+    event_status = db.Column(db.String(30))
     event_image = db.Column(db.String(400))
 
     #comments = db.relationship('Comment',backref='concert')

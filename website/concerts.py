@@ -1,8 +1,8 @@
 import datetime
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Concert, Ticket, Comment
-from .forms import ConcertForm, TicketPurchaseForm, CommentForm
-from flask_login import login_required
+from .forms import ConcertForm, TicketPurchaseForm, CommentForm, UpdateForm
+from flask_login import login_required, current_user
 from . import db, app
 import os
 from werkzeug.utils import secure_filename
@@ -33,12 +33,15 @@ def show(id):
 
     sold_out = False
     sold_tickets = len(db.session.execute(f"SELECT * FROM tickets WHERE event_id='{id}'").all())
-    available_tickets = db.session.execute(f"SELECT ticket_count FROM concerts WHERE id='{id}'").first()[0]
-    print(f"Sold: {sold_tickets}")
-    print(f"Available: {available_tickets}")
-    if (sold_tickets >= available_tickets):
+    available_tickets = db.session.execute(f"SELECT ticket_count FROM concerts WHERE id='{id}'").first()
+    if not available_tickets:
         sold_out = True
-        print("Sold out")
+    else:
+        print(f"Sold: {sold_tickets}")
+        print(f"Available: {available_tickets[0]}")
+        if (sold_tickets >= available_tickets[0]):
+            sold_out = True
+            print("Sold out")
     
     return render_template("concerts/event-details.html",concert=concert,ticket_form=ticket_form,sold_out=sold_out,comment_form=comment_form)
 
@@ -49,37 +52,69 @@ def create():
     form = ConcertForm()
     if form.validate_on_submit():
         #if request.method == "POST":
-        event_name = form.event_name.data
+        # event_name = form.event_name.data
         db_file_path=get_upload_file_path(form)
         concert = Concert(
                 event_creator=current_user.username,
-                event_name=event_name,
+                event_name=form.event_name.data,
                 event_description=form.event_description.data,
                 event_date=form.event_date.data,
                 event_genre=form.genre.data,
                 event_venue=form.venue.data,
                 ticket_count=form.ticket_count.data,
                 ticket_price=form.ticket_price.data,
+                event_status=form.status.data,
                 event_image=db_file_path)
         db.session.add(concert)
         db.session.commit()
 
         # Get newly created concert ID
-        event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{event_name}'").first()[0]
+        event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{form.event_name.data}'").first()[0]
 
         return redirect(url_for('concert.show',id=event_id))
     return render_template('concerts/event-creation.html',form=form)
 
+@bp.route('/update/<id>',methods=["GET","POST"])
+@login_required
+def update(id):
+    form = UpdateForm()
+    if form.validate_on_submit():
+        print(form)
+        # if form.update.data:
+        if request.form.get("Update") == "Update Event":
+            print("UPDATED")
+            # db_file_path=get_upload_file_path(form)
+            # concert = Concert(
+            #         event_creator=current_user.username,
+            #         event_name=form.event_name.data,
+            #         event_description=form.event_description.data,
+            #         event_date=form.event_date.data,
+            #         event_genre=form.genre.data,
+            #         event_venue=form.venue.data,
+            #         ticket_count=form.ticket_count.data,
+            #         ticket_price=form.ticket_price.data,
+            #         event_image=db_file_path)
+            # db.session.add(concert)
+            # db.session.commit()
+
+            # Get newly created concert ID
+            # event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{form.event_name.data}'").first()[0]
+
+            # return redirect(url_for('concert.show',id=event_id))
+        if form.delete.data:
+            print("DELETED")
+    existing_concert = db.session.execute(f"SELECT * FROM concerts WHERE id='{id}'").first() 
+    return render_template('concerts/event-creation.html',form=form,update=True,concert=existing_concert)
+
 def get_upload_file_path(form):
     fp = form.event_image.data
-    filename = "event_image_"+str(event_name)+"."+(fp.filename.split(".")[-1])
+    filename = "event_image_"+str(form.event_name.data)+"."+(fp.filename.split(".")[-1])
 
     BASE_PATH = os.path.dirname(__file__)
 
     upload_path = os.path.join(BASE_PATH,'static/assets/img/event_images',secure_filename(filename))
 
     db_upload_path = '/static/assets/img/event_images/'+secure_filename(filename)
-
     
     fp.save(upload_path)
     return db_upload_path
