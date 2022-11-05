@@ -14,7 +14,11 @@
     <div class="row">
       <div class="col-md-8">
           <h4 class="mb-3">Session Details</h4>
-          <form action="/concerts/create" method="POST" enctype="multipart/form-data">
+            {% if update %}
+            <form action="/concerts/update/{{concert.id}}" method="POST" enctype="multipart/form-data">
+            {% else %}
+            <form action="/concerts/create" method="POST" enctype="multipart/form-data">
+            {% endif %}
             {{ form.csrf_token }}
             <!-- <form> -->
             <div class="row g-3">
@@ -125,11 +129,7 @@
         <div class="col-md-4">
           <h4 class="mb-3">Upload images</h4>
           <!-- <input class="form-control form-control-lg" id="formFileLg" type="file" /> -->
-          {% if update %}
           {{ form.event_image(class_="form-control form-control-lg",id="formFileLg",required=True) }}
-          {% else %}
-          {{ form.event_image(class_="form-control form-control-lg",id="formFileLg",required=True) }}
-          {% endif %}
       </div>
       
       
@@ -139,8 +139,8 @@
   <div class="col text-center">
       {% if update %}
       <!-- <button type="button" class="mt-5 btn btn-lg btn-outline-danger">Delete event</button> -->
-      {{ form.delete(class_="mt-5 btn btn-lg btn-outline-danger",value='Delete') }}
-      {{ form.update(class_="mt-5 w-25 btn btn-primary btn-lg",value='Update Event') }}
+      {{ form.submit(class_="mt-5 btn btn-lg btn-outline-danger",value='Delete Event') }}
+      {{ form.submit(class_="mt-5 w-25 btn btn-primary btn-lg",value='Update Event') }}
       {% else %}
       {{ form.submit(class_="mt-5 w-25 btn btn-primary btn-lg",value='Create Event') }}
       {% endif %}

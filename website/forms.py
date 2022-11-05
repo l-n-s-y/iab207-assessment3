@@ -71,8 +71,8 @@ class UpdateForm(FlaskForm):
         FileRequired(message="Image is required"),
         FileAllowed(ALLOWED_EXTENSIONS,message="Image must be png or jpg")])
 
-    update = SubmitField("Update")
-    delete = SubmitField("Delete")
+    submit = SubmitField()
+    # delete = SubmitField()
 
 class TicketPurchaseForm(FlaskForm):
     ticket_quantity = IntegerField("Ticket Quantity",validators=[InputRequired()])
