@@ -55,20 +55,21 @@ def register():
         user_name = register_form.user_name.data
         email = register_form.email_id.data
         password = register_form.password.data
+        contact_number = register_form.contact_number.data
         user_exists = User.query.filter_by(username=user_name).first()
         if user_exists:
             error="User already exists"
-            print(f"ERROR: {error}")
+            flash(error)
             return redirect(url_for('auth.register',error=error))
 
         password_hash = generate_password_hash(password)
 
-        new_user = User(username=user_name,password_hash=password_hash,email=email)
+        new_user = User(username=user_name,password_hash=password_hash,email=email,contact_number=contact_number)
         db.session.add(new_user)
         db.session.commit()
 
+        flash("Account created successfully","success")
         print(f"User {user_name} created sucessfully.")
-
         login_user(new_user)
 
         return redirect(url_for('main.index'))

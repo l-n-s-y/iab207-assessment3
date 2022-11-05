@@ -16,10 +16,8 @@ class RegisterForm(FlaskForm):
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email"),
         EqualTo('email_confirmation',message="Emails should match")])
     email_confirmation = StringField("Confirm Email",validators=[InputRequired()])
-    # password=PasswordField("Password", validators=[InputRequired(),
-    #               EqualTo('confirm', message="Passwords should match")])
+    contact_number = StringField("Contact Number",validators=[InputRequired()])
     password=PasswordField("Password",validators=[InputRequired()])
-    # confirm = PasswordField("Confirm Password")
 
     submit = SubmitField("Register")
 
@@ -56,23 +54,22 @@ class ConcertForm(FlaskForm):
 
     submit = SubmitField("Submit")
 
-class UpdateForm(FlaskForm):
-    status = SelectField("Status",validators=[InputRequired()],choices=[(status[0],status[1]) for status in EVENT_STATUS])
-    event_name = StringField("Concert Name",validators=[InputRequired()])
-    event_description = TextAreaField("Event Description",validators=[InputRequired()])
-    event_date = DateField("Event Date",validators=[InputRequired()])
+# class UpdateForm(FlaskForm):
+#     status = SelectField("Status",validators=[InputRequired()],choices=[(status[0],status[1]) for status in EVENT_STATUS])
+#     event_name = StringField("Concert Name",validators=[InputRequired()])
+#     event_description = TextAreaField("Event Description",validators=[InputRequired()])
+#     event_date = DateField("Event Date",validators=[InputRequired()])
 
-    genre = SelectField("Genre",validators=[InputRequired()],choices=[(genre[0],genre[1]) for genre in GENRES])
+#     genre = SelectField("Genre",validators=[InputRequired()],choices=[(genre[0],genre[1]) for genre in GENRES])
 
-    venue = StringField("Venue Location",validators=[InputRequired()])
-    ticket_count = IntegerField("Ticket Count",validators=[InputRequired()])
-    ticket_price = StringField("Ticket Price",validators=[InputRequired()])
-    event_image = FileField("Event Image",validators=[
-        FileRequired(message="Image is required"),
-        FileAllowed(ALLOWED_EXTENSIONS,message="Image must be png or jpg")])
+#     venue = StringField("Venue Location",validators=[InputRequired()])
+#     ticket_count = IntegerField("Ticket Count",validators=[InputRequired()])
+#     ticket_price = StringField("Ticket Price",validators=[InputRequired()])
+#     event_image = FileField("Event Image",validators=[
+#         FileRequired(message="Image is required"),
+#         FileAllowed(ALLOWED_EXTENSIONS,message="Image must be png or jpg")])
 
-    submit = SubmitField()
-    # delete = SubmitField()
+#     submit = SubmitField()
 
 class TicketPurchaseForm(FlaskForm):
     ticket_quantity = IntegerField("Ticket Quantity",validators=[InputRequired()])

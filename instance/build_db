@@ -22,6 +22,7 @@ users = Table(
     Column('id',Integer,primary_key=True),
     Column('username',String),
     Column('email',String),
+    Column('contact_number',String),
     Column('password_hash',String),
     Column('comments',ForeignKey('comments.id')))
 

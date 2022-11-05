@@ -1,7 +1,7 @@
 import datetime
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import Concert, Ticket, Comment
-from .forms import ConcertForm, TicketPurchaseForm, CommentForm, UpdateForm
+from .forms import ConcertForm, TicketPurchaseForm, CommentForm
 from flask_login import login_required, current_user
 from . import db, app
 import os
@@ -48,11 +48,12 @@ def show(id):
 @bp.route("/create",methods = ["GET","POST"])
 @login_required
 def create():
-    print(f"Event creation method type: {request.method}")
+    print("CREATING")
     form = ConcertForm()
     if form.validate_on_submit():
         #if request.method == "POST":
         # event_name = form.event_name.data
+        print("Validated")
         db_file_path=get_upload_file_path(form)
         concert = Concert(
                 event_creator=current_user.username,
@@ -67,18 +68,20 @@ def create():
                 event_image=db_file_path)
         db.session.add(concert)
         db.session.commit()
+        print("Concert added")
 
         # Get newly created concert ID
         # event_id = db.session.execute(f"SELECT * FROM concerts WHERE event_name='{form.event_name.data}'").first()[0]
         event_id = Concert.query.filter_by(event_name=form.event_name.data).all()[-1].id
 
         return redirect(url_for('concert.show',id=event_id))
+
     return render_template('concerts/event-creation.html',form=form)
 
 @bp.route('/update/<id>',methods=["GET","POST"])
 @login_required
 def update(id):
-    form = UpdateForm()
+    form = ConcertForm()
     print("UPDATING")
     if form.validate_on_submit():
         print("VALIDATED")

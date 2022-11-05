@@ -23,11 +23,15 @@
             <label for="username" class="form-label">Username</label>
             <!-- <input type="text" class="form-control" id="usernameField" placeholder="anything lolz" required> -->
             {{ form.user_name(class_="form-control",id="usernameField",placeholder="Username",required=True) }}
-            <div class="invalid-feedback">
-              Username field can't be empty
-            </div>
           </div>
+        </div>
 
+        <div class="row justify-content-center">
+          <div class="col-sm-4 mb-2">
+            <label for="contactno" class="form-label">Contact Number</label>
+            <!-- <input type="text" class="form-control" id="email" placeholder="you@example.com" required> -->
+            {{ form.contact_number(class_="form-control",id="contactno",placeholder="+1234567890",required=True) }}
+          </div>
         </div>
 
         <div class="row justify-content-center">
@@ -35,11 +39,7 @@
             <label for="email" class="form-label">Email</label>
             <!-- <input type="text" class="form-control" id="email" placeholder="you@example.com" required> -->
             {{ form.email_id(class_="form-control",id="email",placeholder="you@example.com",required=True) }}
-            <div class="invalid-feedback">
-              Valid email is required.
-            </div>
           </div>
-
         </div>
 
         <div class="row justify-content-center">
@@ -47,9 +47,6 @@
             <label for="password" class="form-label">Password</label>
             <!-- <input type="text" class="form-control" id="password" placeholder="lolz.." required> -->
             {{ form.password(class_="form-control",id="password",placeholder="Password",required=True) }}
-            <div class="invalid-feedback">
-              Password can't be empty
-            </div>
           </div>
         </div>
 
