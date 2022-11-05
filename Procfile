@@ -1,1 +1,1 @@
-web: gunicorn -w 1 'travel:create_app()' --preload
+web: gunicorn -w 1 'website:create_app()' --preload
