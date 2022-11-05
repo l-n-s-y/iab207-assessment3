@@ -138,17 +138,14 @@ def ticketview(id):
 @bp.route('/<id>/comment', methods = ['GET', 'POST'])
 @login_required
 def comment(id):
-  #here the form is created  form = CommentForm()
-  form = CommentForm()
-  concert_obj = Concert.query.filter_by(id=id).first()
-  if form.validate_on_submit():	#this is true only in case of POST method
-    comment = Comment(
-        concert_id=id,
-        text=form.comment.data,
-        user_id="CURRENT USER" # REPLACE
+    form = CommentForm()
+    concert = Concert.query.filter_by(id=id).first()
+    if form.validate_on_submit():
+        comment = Comment(
+            event_id=id,
+            comment_owner=current_user.username,
+            comment=form.comment.data
         )
-    db.session.add(comment)
-    db.session.commit()
-    print("The following comment has been posted:", form.text.data)
-  # notice the signature of url_for
-  return redirect(url_for('concerts.event-details',id=id))
+        db.session.add(comment)
+        db.session.commit()
+    return redirect(url_for('concerts.event-details',id=concert))

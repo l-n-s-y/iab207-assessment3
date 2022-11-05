@@ -78,8 +78,8 @@
                 <div class="row  d-flex justify-content-left">
                     {% for comment in concert.comments %}
                     <div class="col-md-12">  
-                      <b>{{comment.user}} <span class="ml-2 text-muted">{comment.created_at}</span></b>  
-                      <p>{{comment.text}}</p>  
+                      <b>{{comment.user}} <span class="ml-2 text-muted">{comment.created}</span></b>  
+                      <p>{{comment.comment}}</p>  
                     </div> 
                     {% endfor %} 
                 
