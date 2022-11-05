@@ -2,7 +2,8 @@
 
 import sys
 
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Date
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Date, ForeignKey
+from sqlalchemy.orm import relationship
 meta = MetaData()
 engine = create_engine(f"sqlite:///concert_events.sqlite",echo=True)
 
@@ -11,14 +12,18 @@ comments = Table(
     Column('id',Integer,primary_key=True),
     Column('username',String),
     Column('comment',String),
-    Column('created',Date))
+    Column('created',Date),
+    Column('user_id',Integer,ForeignKey('users.id')),
+    Column('concert_id',Integer,ForeignKey('concerts.id'))
+    )
 
 users = Table(
     'users',meta,
     Column('id',Integer,primary_key=True),
     Column('username',String),
     Column('email',String),
-    Column('password_hash',String))
+    Column('password_hash',String),
+    Column('comments',ForeignKey('comments.id')))
 
 concerts = Table(
 	'concerts',meta,
@@ -32,7 +37,8 @@ concerts = Table(
 	Column('ticket_count',Integer),
 	Column('ticket_price',Integer),
     Column('event_status',String),
-	Column('event_image',String))
+	Column('event_image',String),
+    Column('comments',ForeignKey('comments.id')))
 
 tickets = Table(
     'tickets',meta,
