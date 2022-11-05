@@ -20,7 +20,7 @@ def index():
 @bp.route('/history')
 @login_required
 def history():
-    return render_template('/booking-history.html')
+    return render_template('/concerts/booking-history.html')
 
 @bp.route('/redirectToEvents')
 def redirectToEvents():
