@@ -112,9 +112,12 @@ def get_upload_file_path(form):
 
     BASE_PATH = os.path.dirname(__file__)
 
-    upload_path = os.path.join(BASE_PATH,'static/assets/img/event_images',secure_filename(filename))
+    upload_path = os.path.join(BASE_PATH,'static','assets','img','event_images',secure_filename(filename))
 
-    db_upload_path = '/static/assets/img/event_images/'+secure_filename(filename)
+    if os.name == "nt":
+        db_upload_path = '\\static\\assets\\img\\event_images\\'+secure_filename(filename)
+    else:
+        db_upload_path = '/static/assets/img/event_images/'+secure_filename(filename)
     
     fp.save(upload_path)
     return db_upload_path
