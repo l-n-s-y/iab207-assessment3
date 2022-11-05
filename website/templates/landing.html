@@ -7,111 +7,122 @@
 
 
        <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+    {% if events_present %}
+        <style>
+            #hero {
+                width: 100%;
+                height: 100vh;
+                background-image: url("{{ concerts[0].event_image }}");
+            }
+        </style>
+        <section id="hero" class="d-flex align-items-center">
 
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            
-          <h1>Harry Styles</h1>
-          <h2>October 12th, 2022</h2>
-          <h2>Fortitude Valley Music Hall, Brisbane, QLD</h2>
-          <h2>Sold Out</h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
-            <button type="button" class="btn btn-outline-warning btn-lg rounded-pill">Book Tickets</button>
-            <a href="event-details.html" class="glightbox btn-event-details"><i class="bi bi-play-circle"></i><span>View More Details</span></a>
-          </div>
-      </div>
-    </div>
- 
-  </section><!-- End Hero -->
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    
+                    <h1>{{ concerts[0].event_name }}</h1>
+                    <h2>{{ concerts[0].event_date }}</h2>
+                    <h2>{{ concerts[0].event_venue }}</h2>
 
-  <div class="container" id="events-view">
-    
-    <div class="dropdown" id="filter-dropdown">
-      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Filter genres
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Pop</a></li>
-        <li><a class="dropdown-item" href="#">Rock</a></li>
-        <li><a class="dropdown-item" href="#">Soul/RnB</a></li>
-      </ul>
-    </div>
 
-    <br>
+                        {% if concerts[0].event_status == 'Upcoming' %}
+                            <h2>Upcoming</h2>
+                            <div class="d-flex justify-content-center justify-content-lg-start">
+                                <button type="button" class="btn btn-outline-warning btn-lg rounded-pill">Book Tickets</button>
+                            <!-- <button type="button" class="btn btn-success">Upcoming</button> -->
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/shoestrings.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">The Shoestrings</h5>
-                    <p class="card-text">This Irish indie band plays some of the most banging tunes</p>
-                    <button type="button" class="btn btn-success">Upcoming</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
+                        {% elif concerts[0].event_status == 'Booked' %}
+                            <h2>Booked</h2>
+                            <div class="d-flex justify-content-center justify-content-lg-start">
+                                <button type="button" class="btn btn-outline-warning btn-lg rounded-pill" disabled>Book Tickets</button>
+                            <!-- <button type="button" class="btn btn-warning">Booked</button> -->
+
+                        {% elif concerts[0].event_status == 'Cancelled' %}
+                            <h2>Cancelled</h2>
+                            <div class="d-flex justify-content-center justify-content-lg-start">
+                                <button type="button" class="btn btn-outline-warning btn-lg rounded-pill" disabled>Book Tickets</button>
+                            <!-- <button type="button" class="btn btn-danger">Cancelled</button> -->
+
+                        {% elif concerts[0].event_status == 'Sold Out' %}
+                            <h2>Sold Out</h2>
+                            <div class="d-flex justify-content-center justify-content-lg-start">
+                            <button type="button" class="btn btn-outline-warning btn-lg rounded-pill" disabled>Book Tickets</button>
+
+                        {% endif %}
+                        
+                        <a href="event-details.html" class="glightbox btn-event-details"><i class="bi bi-play-circle"></i><span>View More Details</span></a>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/catmoms.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">The CatMoms</h5>
-                    <p class="card-text">Enjoy the beats from the American band known for their lyrics</p>
-                    <button type="button" class="btn btn-success">Upcoming</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/magicans.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Magicans</h5>
-                    <p class="card-text">Come and watch the promo show for their first album</p>
-                    <button type="button" class="btn btn-warning">Booked</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="static/assets/img/sunriseboys.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">SunriseBoys</h5>
-                    <p class="card-text">SunriseBoys returns once again to please our ears</p>
-                    <button type="button" class="btn btn-danger">Cancelled</button>
-                    <a href="event-details.html" class="btn btn-primary">See details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+         
+            </section><!-- End Hero -->
 
-<!--For each concert in db make bootstrap cards-->
-{% for concert in concerts %}
-    <div class="card" style="width: 18rem;">
-        <img src="{{concert.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{concert.name}}</h5>
-            <p class="card-text">{{concert.description}}</p>
-            {% if concert.status == 'Upcoming' %}
-                <button type="button" class="btn btn-success">Upcoming</button>
-            {% elif concert.status == 'Booked' %}
-                <button type="button" class="btn btn-warning">Booked</button>
-            {% elif concert.status == 'Cancelled' %}
-                <button type="button" class="btn btn-danger">Cancelled</button>
+            <div class="container" id="events-view">
+            <br>
+
+            <div class="row">
+            {% if concert_count > 1 %}
+                {% for i in range(1,concert_count) %}
+                    {% if concerts[i].event_status != "Unpublished" or concerts[i].event_creator == current_user.username %}
+                        <div class="col-md-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ concerts[i].event_image }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ concerts[i].event_name }}</h5>
+                                    <p class="card-text">{{ concerts[i].event_description }}</p>
+                                    {% if concerts[i].event_status == 'Open' %}
+                                        <button type="button" class="btn btn-success" disabled>Open</button>
+
+                                    {% elif concerts[i].event_status == 'Booked' %}
+                                        <button type="button" class="btn btn-warning" disabled>Booked</button>
+
+                                    {% elif concerts[i].event_status == 'Cancelled' %}
+                                        <button type="button" class="btn btn-danger" disabled>Cancelled</button>
+
+                                    {% elif concerts[i].event_status == 'Sold Out' %}
+                                        <button type="button" class="btn btn-secondary" disabled>Sold Out</button>
+
+                                    {% elif concerts[i].event_status == 'Unpublished' %}
+                                        <button type="button" class="btn btn-secondary" disabled>Unpublished</button>
+
+                                    {% endif %}
+
+                                    <a href="{{ url_for('concert.show',id=concerts[i].id) }}" class="btn btn-primary">See details</a>
+
+                                    {% if current_user.username == concerts[i].event_creator %}
+                                </div>  
+                                        <a href="{{ url_for('concert.update',id=concerts[i].id) }}" class="btn btn-warning">Edit</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             {% endif %}
-            <a href="event-details.html" class="btn btn-primary">See details</a>
+            </div>
         </div>
-    </div>
-{% endfor %}
 
-<div class="see-more w-50 m-auto mt-5">
+    {% else %}
+        <div class="container-fluid">
+            <div class="px-4 py-5 my-5 text-center">
+                <img class="d-block mx-auto mb-5" src="{{ url_for('static',filename='assets/icon/waveform.png') }}" width="8%" alt="">
+                <h1 class="display-5 fw-bold">Sessions</h1>
+                &nbsp
+                &nbsp
+                &nbsp
+                &nbsp
+                <h3 class="display-10">No events found</h3>
+
+            </div>
+        </div>
+    {% endif %}
+         
+
+<!-- <div class="see-more w-50 m-auto mt-5">
   <button class="w-100 btn btn-outline-primary" type="button" id="seeMoreEvents">See more events..</button>
 
-</div>
+</div> -->
 
 
 
